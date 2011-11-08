@@ -104,7 +104,7 @@ class UsersController < ApplicationController
         
         # Send welcome email
         @message = "Welcome to AppStore!"
-        Notifier.contact(@user.email, "chris@appstore.com", @message).deliver
+        Notifier.contact(@user.email, "chris@tropo.com", @message).deliver
         
         session[:user_id] = @user.id
         

@@ -5,7 +5,7 @@ class Notifier < ActionMailer::Base
     
     mail( :to => toemail,
           :from => fromemail,
-          :subject => "AppStore Update",
+          :subject => "Tropo AppStore Update",
           :body => message)
              
   end

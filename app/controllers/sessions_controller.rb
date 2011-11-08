@@ -103,7 +103,7 @@ class SessionsController < ApplicationController
           if !@user.email.nil?
             # Send welcome email
             @message = "Welcome to AppStore!"
-            Notifier.contact(@authhash[:email], "chris@appstore.com", @message).deliver
+            Notifier.contact(@authhash[:email], "chris@tropo.com", @message).deliver
           end 
           
           session[:user_id] = @user.id      

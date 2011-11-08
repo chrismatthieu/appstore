@@ -11,6 +11,8 @@ gem 'bcrypt-ruby'
 gem 'rest-client'
 gem 'json'
 
+gem 'on_the_spot_in_tree', :git=>'https://github.com/ciscoriordan/on_the_spot_in_tree'
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 

@@ -4,10 +4,10 @@
 <tr><td width="250"><%= image_tag @product.logo, :width => "200", :height => "100", :align=>"left"%></td><td><b><%= @product.name %></b><br/><%= raw(@product.description) %><br/><%=link_to "Visit #{@product.name}'s Site", @product.website %>
 <br/>
 	
-<a href="http://twitter.com/share?text=<%= @product.name %>&amp;url=http://appstore.com/products/<%=@product.id%>" class="twitter-share-button">Tweet</a>
+<a href="http://twitter.com/share?text=<%= @product.name %>&amp;url=http://tropoappstore.herokuapp.com/apps/<%=@product.id%>" class="twitter-share-button">Tweet</a>
 
 <!-- Place this tag where you want the +1 button to render -->
-<g:plusone href="http://appstore.com/products/<%=@product.id%>"></g:plusone>
+<g:plusone href="http://tropoappstore.herokuapp.com/apps/<%=@product.id%>"></g:plusone>
 
 <!--  Place this tag after the last plusone tag -->
 <script type="text/javascript">
@@ -18,7 +18,7 @@
   })();
 </script>
 
-<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=151901608223813&amp;xfbml=1"></script><fb:like href="http://appstore.com/products/<%=@product.id%>" send="true" width="450" show_faces="true" font=""></fb:like>
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=151901608223813&amp;xfbml=1"></script><fb:like href="http://tropoappstore.herokuapp.com/apps/<%=@product.id%>" send="true" width="450" show_faces="true" font=""></fb:like>
 
 <br/>
 		
