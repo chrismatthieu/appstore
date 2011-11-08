@@ -1,0 +1,53 @@
+<br/><p id="notice"><%= notice %></p>
+<h1>You and the People You Follow (<%= link_to "all", "/allfeed"%>)</h1><br/>
+
+<% if @current_user %>
+<div id="pagecontent">
+
+	<% @activities.each do |activity| %>
+
+		<% @followuser = activity.user%>
+		
+		<a href="/<%=@followuser.username%>">
+		<% if @followuser.photo %>	
+			<img src="<%= @followuser.photo %>" width="100" height="100" />
+		<% else %>
+			<%= gravatar_image_tag @followuser.email, :class => "gravatar" rescue ""%>
+		<% end %>
+
+		<b><%= @followuser.username %></b></a>
+
+		<% if !activity.color.nil? %>
+			<span id="highlight_<%= activity.id%>" style="background-color:<%=activity.color%>">
+		<% else %>
+			<span id="highlight_<%= activity.id%>">
+		<% end %>
+
+		<a href="/<%=activity.verse.book_name.gsub(" ", "")%>/<%=activity.verse.chapter%>/<%=activity.verse.number%>">
+		<%= activity.verse.book_name + ' ' +activity.verse.chapter.to_s + ':' + activity.verse.number.to_s %>
+		<%= activity.verse.text%></a>
+		</span>
+
+		<% if activity.comment %>
+
+		<div class="bubble">
+				<blockquote>
+					<p><%= activity.comment.gsub("\n"," ").gsub("\r"," ") %></p><br /><br />
+				</blockquote>
+				<cite>Updated <%= time_ago_in_words activity.updated_at rescue "a short while "%> ago</cite>
+		</div>
+
+		<% end %>
+
+	<% end %>
+
+	</div>
+
+	<br />
+	<p><center><%= will_paginate @activities, :page_links => false %></center></p>
+	<br />
+	<br/><br/>
+
+
+</div>
+<% end %>

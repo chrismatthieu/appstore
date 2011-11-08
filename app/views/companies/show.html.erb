@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @company.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @company.description %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @company.website %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @company.email %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @company.contact %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @company.phone %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%= @company.logo %>
+</p>
+
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

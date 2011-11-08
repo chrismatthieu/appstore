@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AppStore</title>
+  <meta name="keywords" content="tech support" />
+  <meta name="description" content="Social Tech Support." />
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <link type="text/css" rel="stylesheet" href="/qtip/jquery.qtip.css" />
+  <script type="text/javascript" src="/qtip/jquery.qtip.min.js"></script>
+
+  <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+
+
+	<%= yield :head %>
+	<%= yield :stylers %>
+
+</head>
+<body>
+	<div id="leftbar">
+		<p align="left">
+		<br/><br/>
+		<% if @current_user %>
+<center>
+			<%# link_to @current_user.capitalize, "/" + @current_user  %> 		
+			Tropo: <%= @current_user %><br/>
+
+			<%= link_to 'Home', "/" %> |
+			<%= link_to 'Apps', "/apps" %> |
+			<%= link_to 'Logout', '/logout' %><br/>
+			
+			<%# link_to 'Timeline', '/allfeed' %> 
+			<%# link_to 'Following', '/' + @current_user.username + '/following' %> 
+			<%# link_to 'Followers', '/' + @current_user.username + '/followers' %> 
+</center>
+		<% else %>
+			<%= link_to 'Home', "/" %> |
+			<%= link_to 'Apps', "/apps" %> |
+			<%= link_to 'Login', '/login' %><br/>
+		<% end %>
+		<br/>
+		
+		</p>
+	</div>
+	
+	<div id="wrapper" class="page">
+		<br/>
+		<center><img src="/assets/appstore.png" ></center>
+		<!br/>
+		<p id="notice"><%= alert %></p>
+		<br/>
+		<center>
+		<%= form_for :search, :url=>"/search", :html => {:class => 'search', :id => 'search'}, :method => "get" do |f| %>
+
+			<% 
+			if session[:searchterm].nil? 
+				session[:searchterm] = ""
+			end
+			%>
+			<%= f.text_field "searchtext", :value => session[:searchterm], :class => "home-top-search-box", :autofocus => true %><%# f.hidden_field :bible_id, :value => bible.id %>
+			<%#text_field_with_auto_complete :text, :verse, :autocomplete => "off" %>
+			<%# submit_tag "Search"%>
+			<input type="submit" value="Search" name="commit" id="search-button" class="home-search-button"><br/>
+		<% end %>
+
+		</center>
+		<br/>
+<%= yield %>
+
+	</div>
+
+	
+	<!-- <script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	try {
+	var pageTracker = _gat._getTracker("UA-2483685-13");
+	pageTracker._trackPageview();
+	} catch(err) {}</script> -->
+	
+	<div id="footer">
+		<br/>
+		<% time = Time.new %>
+		&copy; <%=time.year%> <%=link_to "Tropo", "http://tropo.com"%> 
+	</div>
+	
+	
+</body>
+</html>

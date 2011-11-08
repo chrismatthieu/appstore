@@ -1,0 +1,41 @@
+<div id="contentwrap">
+<div id="generalform">
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.check_box :allowemail %>
+	<%= f.label "Allow news and update emails from AppStore" %>
+  </div>
+
+  <% if @current_user && @current_user.admin %>
+  <div class="field">
+    <%= f.label :admin %><br />
+    <%= f.check_box :admin %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <p><%= f.submit %> <%=link_to "change password", "/users/password" %></p>
+  </div>
+<% end %>
+</div>
+</div>

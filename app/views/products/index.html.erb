@@ -1,0 +1,41 @@
+<table>
+<% if @featured %>
+
+	<tr><td colspan="2"><hr/></td></tr>
+	<tr><td width="250"><%= link_to image_tag(@featured.logo, :width => "200", :height => "100", :align=>"left"), @featured %></td>
+		<td><img src="/assets/featured_tag_left.png" align="right"><b><%= @featured.name %></b><br/><%= raw(@featured.description) %><br/><%=link_to "Visit #{@featured.name}'s Site", @featured.website %>
+	<% if @admin %>
+		<br/>
+	    <%= link_to 'Show', @featured %> | 
+	    <%= link_to 'Edit', edit_product_path(@featured) %> | 
+	    <%= link_to 'Destroy', @featured, confirm: 'Are you sure?', method: :delete %>
+	<% end %>
+	</td></tr>
+	<tr><td colspan="2"><hr/></td></tr>
+
+<% end %>
+
+<% @products.each do |product| %>
+	<% if !product.featured%>
+	<tr><td colspan="2"><br/></td></tr>
+	<tr><td width="250"><%= link_to image_tag(product.logo, :width => "200", :height => "100", :align=>"left"), product %></td><td><b><%= product.name %></b><br/><%= raw(product.description) %><br/><%=link_to "Visit #{product.name}'s Site", product.website %>
+		<% if @admin %>
+			<br/>
+		    <%= link_to 'Show', product %> | 
+		    <%= link_to 'Edit', edit_product_path(product) %> | 
+		    <%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
+		</td>
+	  </tr>
+	<% end %>
+<% end %>
+
+</table>
+
+<br />
+<p><center><%= will_paginate @products %></center></p>
+<br/>
+
+<% if @admin %>
+	<%= link_to 'New Product', new_product_path %>
+<% end %>

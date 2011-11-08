@@ -1,0 +1,70 @@
+<br/><p id="notice"><%= notice %></p>
+
+<% if @user %>
+<h1><%= @user.username.capitalize %>'<%= "s" if @user.username[-1,1] != "s"%> Activity</h1><br/>
+
+<div id="pagecontent">
+
+<div id="photobar">
+	<center>
+	<% if @user.photo %>	
+		<img src="<%= @user.photo %>" width="100" height="100" />
+	<% else %>
+		<%= gravatar_image_tag @user.email, :class => "gravatar" rescue ""%>
+	<% end %><br/>
+	<% if @current_user.id == @user.id %>
+		<span style="a:underline"><%= link_to 'Edit Profile', "/users/" + @current_user.username + "/edit" %> </span>
+	<% else %>
+		<center>
+		<div id="userstatus">
+			
+			<% if @follow %>
+				<%= form_for :follow, :url=>{:controller=>"follows", :action=>"create", :id=>@user.id, :status=>'unfollow' }, :remote => true do |f| %>
+					<%= button_tag("Unfollow", :title=>"Unfollow " + @user.username.capitalize ) %>
+				<% end %>
+			<% else %>
+				<%= form_for :follow, :url=>{:controller=>"follows", :action=>"create", :id=>@user.id, :status=>'follow' }, :remote => true do |f| %>
+					<%= button_tag("Follow", :title=>"Follow " + @user.username.capitalize ) %>
+				<% end %>
+			<% end %>
+			
+		</div>
+		</center>
+	<% end %>
+	</center>
+	
+</div>
+
+<% @activities.each do |activity| %>
+
+	<a href="/issues/<%=activity.id%>">
+	<%= activity.title %></a>
+	</span>
+	
+	<%# if activity.comments %>
+	<% activity.comments.each do |comment| %>
+	
+	<div class="bubble">
+			<blockquote>
+				<p><%= comment.comment %></p><br /><br />
+			</blockquote>
+			<cite>Updated <%= time_ago_in_words comment.created_at %> ago</cite>
+	</div>
+	
+	<% end %>
+
+<% end %>
+
+</div>
+
+<br />
+<p><center><%= will_paginate @activities, :page_links => false %></center></p>
+<br />
+<br/><br/>
+
+<% else %>
+<br/><br/><br/><br/>
+<h1>User not found :(</h1>
+<div id="pagecontent">
+</div>
+<% end %>

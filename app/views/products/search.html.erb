@@ -1,0 +1,13 @@
+<% content_for :title do %>
+	<%= "Searching - #{session[:searchterm]}" %>
+<% end %>
+
+<br/><h1><%= session[:searchterm] %> referenced <%= @productcount %> times</h1><br/>
+
+<div id="pagecontentwithlinks">
+	<%= render :partial => "product", :collection => @products %>
+</div>
+
+<br />
+<p><center><%= will_paginate @products %></center></p>
+<br /><br /><br />
