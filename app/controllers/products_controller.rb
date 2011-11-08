@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     @featured = Product.where("featured = true").first
 
     @products = Product.paginate(:order => 'name', 
-    :per_page => 10,
+    :per_page => 5,
     :page => params[:page])
     
 
