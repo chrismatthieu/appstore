@@ -440,20 +440,20 @@ color: white;
 .pagination a {
   padding: 2px 5px 2px 5px;
   margin: 2px;
-  border: 1px solid #F9BB3B;
+  border: 1px solid #00AEEF;
   text-decoration: none;
-  color: #92BD54;
+  color: #00AEEF;
 }
 .pagination a:hover, .pagination a:active {
-  border: 1px solid #92BD54;
-  color: #000;
+  border: 1px solid #00AEEF;
+  color: #00AEEF;
 }
 .pagination span.current {
   padding: 2px 5px 2px 5px;
   margin: 2px;
-  border: 1px solid #92BD54;
+  border: 1px solid #00AEEF;
   font-weight: bold;
-  background-color: #92BD54;
+  background-color: #00AEEF;
   color: #FFF;
 }
 .pagination span.disabled {
