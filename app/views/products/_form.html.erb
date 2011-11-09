@@ -25,21 +25,17 @@
     $<%= f.text_field :price %>
   </div>
   <div class="field">
+    <%= f.label "Logo URL" %><br />
+    <%= f.text_field :logo %>
+  </div>
+  <div class="field">
     <%= f.label "Website URL" %><br />
     <%= f.text_field :website %>
   </div>
     <%= f.hidden_field :platform, :value => "tropo" %>
   <div class="field">
-    <%= f.label "Google Cart Script" %><br />
-    <%= f.text_area :buynow %>
-  </div>
-  <div class="field">
     <%= f.label "Video URL" %><br />
     <%= f.text_field :video %>
-  </div>
-  <div class="field">
-    <%= f.label "Logo URL" %><br />
-    <%= f.text_field :logo %>
   </div>
   <div class="field">
     <%= f.label :featured %><br />
