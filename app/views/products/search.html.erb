@@ -2,7 +2,7 @@
 	<%= "Searching - #{session[:searchterm]}" %>
 <% end %>
 
-<br/><h1><%= session[:searchterm] %> referenced <%= @productcount %> times</h1><br/>
+<h1><%= session[:searchterm] %> referenced <%= @productcount %> times</h1>
 
 <div id="pagecontentwithlinks">
 	<%= render :partial => "product", :collection => @products %>

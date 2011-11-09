@@ -1,4 +1,16 @@
 <table>
-<tr><td width="250"><%= link_to (image_tag product.logo, :width => "200", :height => "100", :align=>"left"), product%></td><td><b><%= product.name %></b><br/><%= raw(product.description) %><br/><%=link_to "Learn more", product %></td></tr>
+<tr><td width="250"><%= link_to (image_tag product.logo, :width => "200", :height => "100", :align=>"left"), product%></td><td><b><%=link_to product.name, product %></b><br/><%= raw(product.description) %><br/>
+<br/>
+<% if !product.price.blank? %>
+	<div class="product"><input type="hidden" class="product-title" value="<%=product.name%> (3 months subscription)"><input type="hidden" class="product-price" value="<%=product.price%>"><div class="googlecart-add-button" tabindex="0" role="button" title="Add to cart"></div></div>	
+<% end %>
+<% if @admin %>
+	<div>
+	    <%= link_to 'Show', product %> | 
+	    <%= link_to 'Edit', edit_product_path(product) %> | 
+	    <%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %>
+	</div>
+<% end %>
+</td></tr>
 </table>
-	
+<table><tr colspan="2"><td><p><br/><br/><br/></p></td></tr></table>

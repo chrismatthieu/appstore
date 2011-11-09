@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AppStore</title>
-  <meta name="keywords" content="tech support" />
-  <meta name="description" content="Social Tech Support." />
+  	<title>Tropo AppStore</title>
+  	<meta name="keywords" content="tropo,appstore,communications" />
+  	<meta name="description" content="Tropo AppStore for realtime communications applications and services." />
 
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "application" %>
+  	<%= csrf_meta_tags %>
 
-  <link type="text/css" rel="stylesheet" href="/qtip/jquery.qtip.css" />
-  <script type="text/javascript" src="/qtip/jquery.qtip.min.js"></script>
+  	<link type="text/css" rel="stylesheet" href="/qtip/jquery.qtip.css" />
+  	<script type="text/javascript" src="/qtip/jquery.qtip.min.js"></script>
 
-  <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-
+  	<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+	<script  id='googlecart-script' type='text/javascript' src='https://checkout.google.com/seller/gsc/v2_2/cart.js?mid=950494033967150' integration='jscart-wizard' post-cart-to-sandbox='false' currency='USD' productWeightUnits='LB'></script>
 
 	<%= yield :head %>
 	<%= yield :stylers %>
@@ -58,9 +58,7 @@
 				session[:searchterm] = ""
 			end
 			%>
-			<%= f.text_field "searchtext", :value => session[:searchterm], :class => "home-top-search-box", :autofocus => true %><%# f.hidden_field :bible_id, :value => bible.id %>
-			<%#text_field_with_auto_complete :text, :verse, :autocomplete => "off" %>
-			<%# submit_tag "Search"%>
+			<%= f.text_field "searchtext", :class => "home-top-search-box", :autofocus => true %><%# f.hidden_field :bible_id, :value => bible.id %>
 			<input type="submit" value="Search" name="commit" id="search-button" class="home-search-button"><br/>
 		<% end %>
 
