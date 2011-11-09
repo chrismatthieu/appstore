@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def admin_user
-    if session[:username] == "cmatthieu"
+    if session[:username] == "cmatthieu" or session[:username] == "jdyer"  or session[:username] == "jsgoecke" or session[:username] == "akalsey"
       @admin = true
     else
       @admin = false
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:username]
 
     if @current_user 
-      if session[:username] != "cmatthieu" #!@current_user.admin
+      if session[:username] != "cmatthieu" and session[:username] != "jdyer" and session[:username] != "jsgoecke" and session[:username] != "akalsey" #!@current_user.admin
         @admin = false
         redirect_to '/'
       else

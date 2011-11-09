@@ -3,6 +3,7 @@
 		<tr><td colspan="2"><hr/></td></tr>
 		<tr><td width="250"><%= link_to image_tag(@featured.logo, :width => "200", :height => "100", :align=>"left"), @featured %></td>
 			<td><img src="/assets/featured_tag_left.png" align="right"><b><%=link_to @featured.name, @featured %></b><br/><%= raw(@featured.description) %><br/>
+			<br/>
 			<% if !@featured.price.blank? %>
 				<div class="product"><input type="hidden" class="product-title" value="<%=@featured.name%> (3 months subscription)"><input type="hidden" class="product-price" value="<%=@featured.price%>"><div class="googlecart-add-button" tabindex="0" role="button" title="Add to cart"></div></div>	
 			<% end %>
