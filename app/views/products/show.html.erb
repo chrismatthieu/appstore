@@ -9,7 +9,7 @@
 <% end %>
 
 <% if !@product.price.blank? %>
-	<div class="product"><input type="hidden" class="product-title" value="<%=@product.name%> (3 months subscription)"><input type="hidden" class="product-price" value="<%=@product.price%>"><div class="googlecart-add-button" tabindex="0" role="button" title="Add to cart"></div></div>	
+	<div class="product">$<%=@product.price%> (3 months subscription)<input type="hidden" class="product-title" value="<%=@product.name%> (3 months subscription)"><input type="hidden" class="product-price" value="<%=@product.price%>"><div class="googlecart-add-button" tabindex="0" role="button" title="Add to cart"></div></div>	
 <% end %>
 <p align="right"><%=link_to "Visit #{@product.name}'s Site", @product.website %></p>
 
